@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"reflect"
 	"testing"
+	"time"
 )
 
 type Movie struct {
@@ -23,6 +24,7 @@ type People struct {
 	age       int
 	hobby     []string
 	Abilities xxx
+	Time      time.Duration
 }
 
 type Singer struct {
@@ -42,7 +44,7 @@ func Test(t *testing.T) {
 	//	maps map[string]int
 	var singer xxx = Singer{"song"}
 	//}{"xwd",[]int{1,2,3},map[string]int{"sss":1,"zzz":123413}})
-	xwd := People{"xwd", 24, []string{"swimming", "working out"}, singer}
+	xwd := People{"xwd", 24, []string{"swimming", "working out"}, singer, time.Hour}
 
 	strangelove := Movie{
 		Title:    "Dr. Strangelove",

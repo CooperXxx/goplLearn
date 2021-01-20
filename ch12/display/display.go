@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"reflect"
 	"strconv"
+	"strings"
 )
 
 func Display(name string, x interface{}) {
@@ -65,5 +66,12 @@ func display(path string, v reflect.Value) {
 		}
 	default: // basic types, channels, funcs
 		fmt.Printf("%s = %s\n", path, formatAtom(v))
+	}
+
+	t := v.Type()
+	for i := 0; i < v.NumMethod(); i++ {
+		methType := v.Method(i).Type()
+		fmt.Printf("%s.func (%s) %s%s\n", path, t, t.Method(i).Name, strings.TrimPrefix(methType.String(), "func"))
+		//fmt.Println(methType.String())
 	}
 }
